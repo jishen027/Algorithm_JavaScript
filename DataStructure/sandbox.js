@@ -1,29 +1,35 @@
-/** queue */
-const queue = function () {
-  const collection = [];
+/**  Priority Queue */
 
-  this.print = function () {
+const PriorityQueue = function () {
+  const collection = []
+
+  this.isEmpty = function () {
+    return collection.length === 0;
+  }
+
+  this.printCollectiom = function () {
     console.log(collection);
   }
 
   this.enqueue = function (element) {
-    collection.push(element);
+    if (this.isEmpty()) {
+      collection.push(element)
+    } else {
+      let added = false;
+      for (let i = 0; i < collection.length; i++) {
+        if (element[1] > collection[i][1]) { //check priority
+          collection.splice(i, 0, element);
+          added = true;
+          break;
+        }
+      }
+      if (!added) {
+        collection.push(element);
+      }
+    }
   }
 
-  this.dequeue = function (element) {
-    return collection.shift();
-  }
-
-  // return the first element in the queue
-  this.front = function () {
-    return collection[0];
-  }
-
-  this.size = function () {
-    return collection.length;
-  }
-
-  this.isEmpty = function () {
-    return (collection.length === 0)
+  this.dequeue = function () {
+    const value = collection.shift();
   }
 }
