@@ -1,0 +1,13 @@
+# git ignore for node.js projects
+node_modules
+npm-debug.log
+
+# vscode
+.vscode
+
+# OS generated files
+.DS_Store
+
+# build
+build
+dist
